@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Course Critic</h1>
+            <span class="school-name">XYZ University</span>
+            <button class="favorites-btn" onclick="location.href='favorites.html'">Favorites</button>
+        </header>
+       
+        <main>
+            <div class="search-filter">
+                <input type="text" placeholder="Search for courses...">
+                <button>Search</button>
+                <button>Filter</button>
+            </div>
+
+            <div class="course-list">
+                <div class="course" onclick="location.href='course.html'">
+                    <h2>CS101 - Introduction to Programming</h2>
+                    <p>Learn the basics of Python and software development.</p>
+                    <span>⭐ 4.5</span>
+                </div>
+
+                <div class="course" onclick="location.href='course.html'">
+                    <h2>ENG202 - English Literature</h2>
+                    <p>A deep dive into classic and modern literature.</p>
+                    <span>⭐ 4.0</span>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
