@@ -5,6 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course List</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function toggleFilterForm() {
+            const filterForm = document.getElementById("filter-form");
+            filterForm.style.display = (filterForm.style.display === "none" || filterForm.style.display === "") ? "block" : "none";
+        }
+    </script>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background: #fff;
+            width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .school-name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .favorites-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .favorites-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Search and Filter */
+        .search-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Filter Form */
+        .filter-form {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .filter-form select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Course List */
+        .course-list {
+            margin-top: 20px;
+        }
+
+        .course {
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .course:hover {
+            background: #e9f5ff;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -18,7 +139,49 @@
             <div class="search-filter">
                 <input type="text" placeholder="Search for courses...">
                 <button>Search</button>
-                <button>Filter</button>
+                <button onclick="toggleFilterForm()">Filter</button>
+            </div>
+
+            <!-- Filter Form (Initially Hidden) -->
+            <div class="filter-form" id="filter-form">
+                <label for="course-subject">Course Subject:</label>
+                <select id="course-subject">
+                    <option value="cs">Computer Science</option>
+                    <option value="math">Mathematics</option>
+                    <option value="eng">English</option>
+                    <option value="bio">Biology</option>
+                </select>
+
+                <label for="attributes">Attributes:</label>
+                <select id="attributes">
+                    <option value="writing-intensive">Writing Intensive</option>
+                    <option value="lab-required">Lab Required</option>
+                    <option value="online">Online</option>
+                </select>
+
+                <label for="difficulty">Difficulty Level:</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="hard">Hard</option>
+                </select>
+
+                <label for="instructor">Instructor:</label>
+                <select id="instructor">
+                    <option value="smith">Prof. Smith</option>
+                    <option value="johnson">Prof. Johnson</option>
+                    <option value="williams">Prof. Williams</option>
+                </select>
+
+                <label for="work-type">Type of Work:</label>
+                <select id="work-type">
+                    <option value="exams-heavy">Exam Heavy</option>
+                    <option value="papers-heavy">Paper Heavy</option>
+                    <option value="projects-heavy">Project Heavy</option>
+                    <option value="balanced">Balanced</option>
+                </select>
+
+                <button>Apply Filters</button>
             </div>
 
             <div class="course-list">
