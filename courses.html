@@ -12,59 +12,59 @@
         }
     </script>
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
+            text-align: center;
         }
 
         .container {
+            width: 70%;
+            margin: 20px auto;
             background: #fff;
-            width: 600px;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Header */
         header {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            border-radius: 10px 10px 0 0;
         }
 
-        .school-name {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .favorites-btn {
-            background-color: #007BFF;
-            color: white;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .favorites-btn:hover {
-            background-color: #0056b3;
-        }
-
-        /* Search and Filter */
-        .search-filter {
+        .auth-buttons {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+        }
+
+        .auth-buttons button, .favorites-btn {
+            background: white;
+            color: #0073e6;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .search-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
         }
 
         input[type="text"] {
-            flex: 1;
+            width: 50%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -75,7 +75,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            background-color: #007BFF;
+            background-color: #0073e6;
             color: white;
             transition: 0.3s;
         }
@@ -84,7 +84,6 @@
             background-color: #0056b3;
         }
 
-        /* Filter Form */
         .filter-form {
             display: none;
             margin-top: 15px;
@@ -108,96 +107,106 @@
             border-radius: 5px;
         }
 
-        /* Course List */
         .course-list {
             margin-top: 20px;
         }
 
         .course {
             padding: 15px;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
             cursor: pointer;
+            text-align: left;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .course:hover {
-            background: #e9f5ff;
+        .course h2 {
+            margin: 0;
+        }
+
+        .course p {
+            margin: 5px 0;
+        }
+
+        .course span {
+            display: block;
+            font-size: 18px;
+            color: #ff9800;
         }
     </style>
 </head>
 <body>
+    <header>
+        <span onclick="location.href='index.html'">Course Critic</span>
+        <span class="school-name">Tufts University</span>
+        <button class="favorites-btn" onclick="location.href='favorites.html'">Favorites</button>
+    </header>
+    
     <div class="container">
-        <header>
-            <h1>Course Critic</h1>
-            <span class="school-name">Tufts University</span>
-            <button class="favorites-btn" onclick="location.href='favorites.html'">Favorites</button>
-        </header>
-       
-        <main>
-            <div class="search-filter">
-                <input type="text" placeholder="Search for courses...">
-                <button>Search</button>
-                <button onclick="toggleFilterForm()">Filter</button>
+        <div class="search-filter">
+            <input type="text" placeholder="Search for courses...">
+            <button>Search</button>
+            <button onclick="toggleFilterForm()">Filter</button>
+        </div>
+
+        <div class="filter-form" id="filter-form">
+            <label for="course-subject">Course Subject:</label>
+            <select id="course-subject">
+                <option value="cs">Computer Science</option>
+                <option value="math">Mathematics</option>
+                <option value="eng">English</option>
+                <option value="bio">Biology</option>
+            </select>
+
+            <label for="attributes">Attributes:</label>
+            <select id="attributes">
+                <option value="writing-intensive">Writing Intensive</option>
+                <option value="lab-required">Lab Required</option>
+                <option value="online">Online</option>
+            </select>
+
+            <label for="difficulty">Difficulty Level:</label>
+            <select id="difficulty">
+                <option value="easy">5⭐</option>
+                <option value="moderate">4⭐</option>
+                <option value="hard">3⭐</option>
+            </select>
+
+            <label for="instructor">Instructor:</label>
+            <select id="instructor">
+                <option value="smith">Prof. Smith</option>
+                <option value="johnson">Prof. Johnson</option>
+                <option value="williams">Prof. Williams</option>
+            </select>
+
+            <label for="work-type">Type of Work:</label>
+            <select id="work-type">
+                <option value="exams-heavy">Exam Heavy</option>
+                <option value="papers-heavy">Paper Heavy</option>
+                <option value="projects-heavy">Project Heavy</option>
+                <option value="balanced">Balanced</option>
+            </select>
+
+            <button>Apply Filters</button>
+        </div>
+
+        <div class="course-list">
+            <div class="course" onclick="location.href='coursereview.html'">
+                <h2>CS101 - Introduction to Programming</h2>
+                <p>Learn the basics of Python and software development.</p>
+                <span>⭐ 4.5</span>
             </div>
 
-            <!-- Filter Form (Initially Hidden) -->
-            <div class="filter-form" id="filter-form">
-                <label for="course-subject">Course Subject:</label>
-                <select id="course-subject">
-                    <option value="cs">Computer Science</option>
-                    <option value="math">Mathematics</option>
-                    <option value="eng">English</option>
-                    <option value="bio">Biology</option>
-                </select>
-
-                <label for="attributes">Attributes:</label>
-                <select id="attributes">
-                    <option value="writing-intensive">Writing Intensive</option>
-                    <option value="lab-required">Lab Required</option>
-                    <option value="online">Online</option>
-                </select>
-
-                <label for="difficulty">Difficulty Level:</label>
-                <select id="difficulty">
-                    <option value="easy">Easy</option>
-                    <option value="moderate">Moderate</option>
-                    <option value="hard">Hard</option>
-                </select>
-
-                <label for="instructor">Instructor:</label>
-                <select id="instructor">
-                    <option value="smith">Prof. Smith</option>
-                    <option value="johnson">Prof. Johnson</option>
-                    <option value="williams">Prof. Williams</option>
-                </select>
-
-                <label for="work-type">Type of Work:</label>
-                <select id="work-type">
-                    <option value="exams-heavy">Exam Heavy</option>
-                    <option value="papers-heavy">Paper Heavy</option>
-                    <option value="projects-heavy">Project Heavy</option>
-                    <option value="balanced">Balanced</option>
-                </select>
-
-                <button>Apply Filters</button>
+            <div class="course" onclick="location.href='coursereview.html'">
+                <h2>ENG202 - English Literature</h2>
+                <p>A deep dive into classic and modern literature.</p>
+                <span>⭐ 4.0</span>
             </div>
-
-            <div class="course-list">
-                <div class="course" onclick="location.href='coursereview.html'">
-                    <h2>CS101 - Introduction to Programming</h2>
-                    <p>Learn the basics of Python and software development.</p>
-                    <span>⭐ 4.5</span>
-                </div>
-
-                <div class="course" onclick="location.href='coursereview.html'">
-                    <h2>ENG202 - English Literature</h2>
-                    <p>A deep dive into classic and modern literature.</p>
-                    <span>⭐ 4.0</span>
-                </div>
-            </div>
-        </main>
+        </div>
     </div>
 </body>
 </html>

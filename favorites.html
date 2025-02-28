@@ -5,26 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorites</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            width: 70%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .favorites-btn {
+            background: white;
+            color: #0073e6;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .course-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .course {
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            cursor: pointer;
+            text-align: left;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .course:hover {
+            background: #e9f5ff;
+        }
+
+        .course h2 {
+            margin: 0;
+        }
+
+        .course span {
+            display: block;
+            font-size: 18px;
+            color: #ff9800;
+        }
+    </style>
+    <script>
+        function goToReview() {
+            location.href = 'coursereview.html';
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Course Critic</h1>
-            <button class="favorites-btn">Favorites</button>
-        </header>
+    <header>
+        <span onclick="location.href='index.html'">Course Critic</span>
+        <button class="favorites-btn">Favorites</button>
+    </header>
 
-        <main>
-            <h2>My Saved Courses</h2>
-            <div class="course">
+    <div class="container">
+        <h2>My Saved Courses</h2>
+        <div class="course-list">
+            <div class="course" onclick="goToReview()">
                 <h2>CS101 - Introduction to Programming</h2>
                 <span>⭐ 4.5</span>
             </div>
 
-            <div class="course">
+            <div class="course" onclick="goToReview()">
                 <h2>ENG202 - English Literature</h2>
                 <span>⭐ 4.0</span>
             </div>
-        </main>
+        </div>
     </div>
 </body>
 </html>
