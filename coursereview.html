@@ -57,6 +57,12 @@
             margin: 10px 0;
         }
 
+        .resources {
+            margin: 10px 20px;
+            text-align: left;
+            font-size: 16px;
+        }
+
         .reviews {
             margin-top: 20px;
             text-align: left;
@@ -79,10 +85,61 @@
             gap: 10px;
             margin-top: 15px;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .modal input[type="text"], .modal input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .modal button {
+            margin-top: 10px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
     </style>
     <script>
         function saveCourse() {
             alert("Course saved to your favorites!");
+        }
+
+        function toggleModal() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('uploadModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('uploadModal').style.display = 'none';
+        }
+
+        function submitResource() {
+            alert("Resource submitted successfully!");
+            closeModal();
         }
     </script>
 </head>
@@ -101,7 +158,16 @@
             <div class="buttons">
                 <button onclick="location.href='reviewform.html'">Leave a Review</button>
                 <button class="save-course" onclick="saveCourse()">💾 Save Course</button>
+                <button onclick="toggleModal()">📚 Upload Resource</button>
             </div>
+        </div>
+
+        <div class="resources">
+            <h4>Free Resources:</h4>
+            <ul>
+                <li><a href="https://automatetheboringstuff.com/" target="_blank">Automate the Boring Stuff with Python</a></li>
+                <li><a href="https://docs.python.org/3/tutorial/" target="_blank">Python Official Tutorial</a></li>
+            </ul>
         </div>
 
         <div class="reviews">
@@ -128,6 +194,15 @@
                 <p><strong>Tips:</strong> Review past exams and practice problems regularly.</p>
             </div>
         </div>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="closeModal()"></div>
+    <div id="uploadModal" class="modal">
+        <h3>Upload a Free Resource</h3>
+        <input type="text" placeholder="Resource Name">
+        <input type="url" placeholder="Resource Link">
+        <button onclick="submitResource()">Submit</button>
+        <button onclick="closeModal()">Cancel</button>
     </div>
 </body>
 </html>

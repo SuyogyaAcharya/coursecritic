@@ -12,8 +12,22 @@
         }
 
         function applyFilters() {
-        alert("Your filters were applied!"); // Show confirmation message
-        toggleFilterForm(); // Hide the filter form
+            alert("Your filters were applied!");
+            toggleFilterForm();
+        }
+
+        function sortCourses(order) {
+            const courseList = document.querySelector('.course-list');
+            const courses = Array.from(courseList.querySelectorAll('.course'));
+            
+            courses.sort((a, b) => {
+                const ratingA = parseFloat(a.querySelector('span').innerText.split('⭐ ')[1]);
+                const ratingB = parseFloat(b.querySelector('span').innerText.split('⭐ ')[1]);
+                return order === 'asc' ? ratingA - ratingB : ratingB - ratingA;
+            });
+
+            courseList.innerHTML = '';
+            courses.forEach(course => courseList.appendChild(course));
         }
     </script>
     <style>
@@ -150,9 +164,11 @@
         <span class="school-name">Tufts University</span>
         <button class="favorites-btn" onclick="location.href='favorites.html'">Favorites</button>
     </header>
-    
+
     <div class="container">
         <div class="search-filter">
+            <button onclick="sortCourses('asc')">Sort ▲</button>
+            <button onclick="sortCourses('desc')">Sort ▼</button>
             <input type="text" placeholder="Search for courses...">
             <button>Search</button>
             <button onclick="toggleFilterForm()">Filter</button>
@@ -415,6 +431,7 @@
 
 
         </div>
+
     </div>
 </body>
 </html>
