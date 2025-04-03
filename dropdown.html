@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interaction Technique Experiment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .task-container {
+      display: flex;
+      gap: 50px;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    input[type="text"], select {
+      width: 200px;
+      height: 30px;
+      padding: 5px;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Interaction Technique Experiment</h2>
+    <div class="task-container">
+      <!-- Text Entry Search Bar -->
+      <div class="input-group">
+        <label for="search-bar">Enter a U.S. State:</label>
+        <input type="text" id="search-bar" placeholder="Enter state...">
+        <button onclick="submitSearch()">Submit</button>
+        <div id="search-result" class="result"></div>
+      </div>
+
+      <!-- Dropdown Menu -->
+      <div class="input-group">
+        <label for="state-dropdown">Select a U.S. State:</label>
+        <select id="state-dropdown">
+          <option value="">Select state...</option>
+          <option value="Massachusetts">Massachusetts</option>
+          <option value="Florida">Florida</option>
+          <option value="Illinois">Illinois</option>
+          <option value="New York">New York</option>
+          <option value="California">California</option>
+        </select>
+        <button onclick="submitDropdown()">Submit</button>
+        <div id="dropdown-result" class="result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitSearch() {
+      const searchBar = document.getElementById('search-bar');
+      const searchResult = document.getElementById('search-result');
+      const state = searchBar.value.trim();
+
+      if (state) {
+        searchResult.textContent = `You entered: ${state}`;
+      } else {
+        searchResult.textContent = 'Please enter a state.';
+      }
+    }
+
+    function submitDropdown() {
+      const dropdown = document.getElementById('state-dropdown');
+      const dropdownResult = document.getElementById('dropdown-result');
+      const state = dropdown.value;
+
+      if (state) {
+        dropdownResult.textContent = `You selected: ${state}`;
+      } else {
+        dropdownResult.textContent = 'Please select a state.';
+      }
+    }
+  </script>
+</body>
+</html>
